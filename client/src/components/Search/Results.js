@@ -1,19 +1,15 @@
-// Include React as a dependency
 import React, { Component } from 'react'
 
-// Include our helpers for API calls
 import helpers from "../../utils/helpers";
 
-// Results Component Declaration
 class Results extends Component {
-  // Here we will save states for the contents we save
+
   state = {
     title: "",
     url: "",
     pubdate: ""
   }
 
-  // This code handles the sending of the search terms to the parent Search component
   handleClick = (item) => {
     console.log("CLICKED", item);
 
@@ -21,12 +17,9 @@ class Results extends Component {
       console.log(item.web_url);
     });
   }
-
-  // A helper method for mapping through our articles and outputting some HTML
   renderArticles = () => {
     return this.props.results.docs.map((article, index) => {
 
-      // Each article thus reperesents a list group item with a known index
       return (
         <div key={index}>
           <li className="list-group-item">
@@ -57,7 +50,6 @@ class Results extends Component {
 
   }
 
-  // A helper method for rendering a container to hold all of our articles
   renderContainer = () => {
     return (
       <div className="main-container">
@@ -84,7 +76,7 @@ class Results extends Component {
     );
   }
   render() {
-    // If we have no articles, render this HTML
+  
     if (!this.props.results.docs) {
       return (
         <li className="list-group-item">
@@ -96,10 +88,9 @@ class Results extends Component {
         </li>
       );
     }
-    // If we have articles, return this.renderContainer() which in turn, returns all the articles
+ 
     return this.renderContainer();
   }
 };
 
-// Export the module back to the route
 export default Results;

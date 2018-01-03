@@ -1,32 +1,25 @@
-// Include React as a dependency
 import React, { Component } from 'react'
 
-// Query Component Declaration
 class Query extends Component {
-  // Here we set initial variables for the component to be blanks
+ 
   state = { 
     search: "baseball",
     start: "2006",
     end: "2016"
   }
 
-  // Whenever we detect ANY change in the textbox, we register it.
   handleChange = (event) => {
-    // Here we create syntax to capture any change in text to the query terms (pre-search).
-    // See this Stack Overflow answer for more details:
-    // http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
+  
     var newState = {};
     newState[event.target.id] = event.target.value;
     this.setState(newState);
   }
 
-  // This code handles the sending of the search terms to the parent Search component
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.updateSearch(this.state.search, this.state.start, this.state.end);
   }
 
-  // Here we render the Query component
   render() {
 
     return (
@@ -102,5 +95,4 @@ class Query extends Component {
   }
 };
 
-// Export the module back to the route
 export default Query;
